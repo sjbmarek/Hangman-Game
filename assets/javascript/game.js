@@ -2,7 +2,27 @@
 // Declare variables
 
 // Create array of target words
-var targetWords = ["yoga", "samadhi", "asana", "namaste", "practice"]
+var targetWords = ["yoga", "samadhi", "asana", "namaste", "practice", "meditation"]
+
+var targetDefined = []
+targetDefined[0] = "... breath,meditation, and body postures are practiced for health and relaxation"
+targetDefined[1] = "... meditative absorption where the mind becomes still and blissful"
+targetDefined[2] = "... the physical posture within yoga practice"
+targetDefined[3] = "... my soul honors your soul - we are one"
+targetDefined[4] = "... engagement in yoga"
+targetDefined[5] = "... spending time in quiet thought"
+
+
+// Check relative paths to these images
+var targetImage = []
+targetImage[0] = "assets/images/yoga.jpg"
+targetImage[1] = "assets/images/samadhi.jpg"
+targetImage[2] = "assets/images/asana.jpg"
+targetImage[3] = "assets/images/namaste.jpg"
+targetImage[4] = "assets/images/practice.jpg"
+targetImage[5] = "assets/images/meditation.jpg"
+
+
 var unknownWord = []
 var usedLetters = []
 var wordLength
@@ -10,7 +30,10 @@ var present = false
 
 // Randomly select a target word from the array
 var selectedWord = targetWords[Math.floor(Math.random() * targetWords.length)];
-console.log (selectedWord)
+console.log (selectedWord);
+// Finds the index of the randomly chosen word
+var idx = targetWords.indexOf(selectedWord);
+console.log (idx);
 
 // Start on any key pressed.
 
@@ -20,8 +43,8 @@ for (i=0;i<selectedWord.length;i++) {
 	console.log(unknownWord);
 }
   var html=
-  	  "<p>Guess a letter: </p>" +
-      "<p>Unknown Word:   " + unknownWord.join(" ") + "</p>";
+      "<p>Unknown Word:   " + unknownWord.join(" ") + "</p>" +
+      "<p>Used Letters: " + usedLetters.join(" ") + "</p>";
       document.querySelector("#game").innerHTML = html;
 
 // Guess a letter, collect the letter in event on keyup
@@ -46,7 +69,6 @@ document.onkeyup = function(event) {
 			unknownWord[i] = userGuess; 
 // Update the unknown array - display
 			var html=
-  	  		"<p>Guess a letter: </p>" +
       		"<p>Unknown Word:   " + unknownWord.join(" ") + "</p>" +
       		"<p>Used Letters: " + usedLetters.join(" ") + "</p>";
       		document.querySelector("#game").innerHTML = html;
@@ -62,7 +84,6 @@ document.onkeyup = function(event) {
 			console.log(usedLetters);
 // Update the used letter array - display
 			var html=
-  	  		"<p>Guess a letter: </p>" +
       		"<p>Unknown Word: " + unknownWord.join(" ") + "</p>"+
       		"<p>Used Letters: " + usedLetters.join(" ") + "</p>";
       		document.querySelector("#game").innerHTML = html;
@@ -78,11 +99,20 @@ document.onkeyup = function(event) {
 	}
 		if(finish){
 			var html=
-  	  		"<p>Guess a letter: </p>" +
       		"<p>Unknown Word: " + unknownWord.join(" ") + "</p>"+
       		"<p>Used Letters: " + usedLetters.join(" ") + "</p>"+
-      		"<h1>YES,YOU GOT IT! </h1>";
+      		"<h1>GOOD KARMA ABOUNDS!</h1>";
       		document.querySelector("#game").innerHTML = html;
+
+      		var extra=
+      		"<p>" + targetWords[idx] + "</p>" +
+      		"<p>" + targetDefined[idx] + "</p>";
+      		document.querySelector("#definition").innerHTML = extra;
+      		var photo=
+      		"<img src =" + targetImage[idx] + ">";
+      		document.querySelector("#pic").innerHTML = photo;
+
+
       		// setTimeout(4000);
 // Press any key to continue		
 
@@ -90,16 +120,25 @@ document.onkeyup = function(event) {
 			usedLetters = [];
 			unknownWord = [];
 			selectedWord = targetWords[Math.floor(Math.random() * targetWords.length)];
-console.log (selectedWord);
+			console.log (selectedWord);
+			idx = targetWords.indexOf(selectedWord);
+
 			for (i=0;i<selectedWord.length;i++) {
 				unknownWord.push(" _ ");
 				console.log(unknownWord);
 			}
  			 var html=
-  	  			"<p>Guess a letter: </p>" +
-      			"<p>Unknown Word:   " + unknownWord.join(" ") + "</p>";
+      			"<p>Unknown Word:   " + unknownWord.join(" ") + "</p>" +
+     			"<p>Used Letters: " + usedLetters.join(" ") + "</p>";
      			 document.querySelector("#game").innerHTML = html;
 
 		}
 // This is end of event loop.
 }
+
+
+// Modifications:  Change html update to be a single function that is executed at 4 places.
+// Add three element array with related target word information.
+// Make the style a calming visual pleasure.
+// Add calm music playing in the background.
+// That is all.
