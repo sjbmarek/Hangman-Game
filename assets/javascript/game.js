@@ -5,16 +5,15 @@
 var targetWords = ["yoga", "samadhi", "asana", "namaste", "practice", "meditation"]
 
 var targetDefined = []
-targetDefined[0] = "... breath,meditation, and body postures are practiced for health and relaxation"
-targetDefined[1] = "... meditative absorption where the mind becomes still and blissful"
-targetDefined[2] = "... the physical posture within yoga practice"
-targetDefined[3] = "... my soul honors your soul - we are one"
-targetDefined[4] = "... engagement in yoga"
-targetDefined[5] = "... spending time in quiet thought"
+targetDefined[0] = ". . . breath, meditation, and body postures are practiced for health and relaxation"
+targetDefined[1] = ". . . meditative absorption where the mind becomes still and blissful"
+targetDefined[2] = ". . . the physical posture within yoga practice"
+targetDefined[3] = ". . . my soul honors your soul - we are one"
+targetDefined[4] = ". . . engagement in yoga"
+targetDefined[5] = ". . . spending time in quiet thought"
 
-
-// Check relative paths to these images
 var targetImage = []
+// Check relative paths to these images
 targetImage[0] = "assets/images/yoga.jpg"
 targetImage[1] = "assets/images/samadhi.jpg"
 targetImage[2] = "assets/images/asana.jpg"
@@ -51,7 +50,7 @@ for (i=0;i<selectedWord.length;i++) {
 document.onkeyup = function(event) {
       var userGuess = event.key;
       console.log (userGuess);
-      alert("You guessed: " + userGuess);
+      // alert("You selected: " + userGuess);
       present=false;
       finish=true;
       console.log(present);
@@ -100,8 +99,7 @@ document.onkeyup = function(event) {
 		if(finish){
 			var html=
       		"<p>Unknown Word: " + unknownWord.join(" ") + "</p>"+
-      		"<p>Used Letters: " + usedLetters.join(" ") + "</p>"+
-      		"<h1>GOOD KARMA ABOUNDS!</h1>";
+      		"<p>Used Letters: " + usedLetters.join(" ") + "</p>";
       		document.querySelector("#game").innerHTML = html;
 
       		var extra=
