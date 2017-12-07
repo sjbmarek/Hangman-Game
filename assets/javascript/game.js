@@ -26,6 +26,8 @@ var unknownWord = []
 var usedLetters = []
 var wordLength
 var present = false
+var countGuess = 0
+var wins = 0
 
 // Randomly select a target word from the array
 var selectedWord = targetWords[Math.floor(Math.random() * targetWords.length)];
@@ -34,7 +36,6 @@ console.log (selectedWord);
 var idx = targetWords.indexOf(selectedWord);
 console.log (idx);
 
-// Start on any key pressed.
 
 // Initial set up, show the blank spaces of the target word as an unknown array
 for (i=0;i<selectedWord.length;i++) {
@@ -43,8 +44,15 @@ for (i=0;i<selectedWord.length;i++) {
 }
   var html=
       "<p>Unknown Word:   " + unknownWord.join(" ") + "</p>" +
-      "<p>Used Letters: " + usedLetters.join(" ") + "</p>";
+      "<p>Used Letters (8 max): " + usedLetters.join(" ") + "</p>";
       document.querySelector("#game").innerHTML = html;
+
+ // Get music and play as background 
+ var audioElement = document.createElement("audio");
+   audioElement.setAttribute("src", "assets/images/bgmusic.mp3");
+   audioElement.play();
+
+
 
 // Guess a letter, collect the letter in event on keyup
 document.onkeyup = function(event) {
@@ -54,6 +62,7 @@ document.onkeyup = function(event) {
       present=false;
       finish=true;
       console.log(present);
+
   
 
 // Loop through the letters of the target word.
@@ -69,7 +78,8 @@ document.onkeyup = function(event) {
 // Update the unknown array - display
 			var html=
       		"<p>Unknown Word:   " + unknownWord.join(" ") + "</p>" +
-      		"<p>Used Letters: " + usedLetters.join(" ") + "</p>";
+      		"<p>Used Letters (8 max): " + usedLetters.join(" ") + "</p>"+
+      		"<p>Successes: " + wins;
       		document.querySelector("#game").innerHTML = html;
 
 		}
@@ -81,40 +91,52 @@ document.onkeyup = function(event) {
 
 			usedLetters.push(userGuess.toUpperCase());
 			console.log(usedLetters);
+			countGuess++;
 // Update the used letter array - display
 			var html=
       		"<p>Unknown Word: " + unknownWord.join(" ") + "</p>"+
-      		"<p>Used Letters: " + usedLetters.join(" ") + "</p>";
+      		"<p>Used Letters (8 max): " + usedLetters.join(" ") + "</p>" +
+      		"<p>Successes: " + wins;
       		document.querySelector("#game").innerHTML = html;
+      		
+    
+      		}
 
-		}
+		
 // If all letters are not _ then winner and display related target word info.
 	for (i=0;i<unknownWord.length;i++){
 		console.log(unknownWord.length);
 		console.log(unknownWord[i])
-		if((unknownWord[i])===" _ "){
+		if(((unknownWord[i])===" _ ") && (countGuess<8)){
 			finish=false;
 		}
 	}
 		if(finish){
-			var html=
-      		"<p>Unknown Word: " + unknownWord.join(" ") + "</p>"+
-      		"<p>Used Letters: " + usedLetters.join(" ") + "</p>";
-      		document.querySelector("#game").innerHTML = html;
+			// var html=
+   //    		"<p>Unknown Word: " + unknownWord.join(" ") + "</p>"+
+   //    		"<p>Used Letters (8 max): " + usedLetters.join(" ") + "</p>"+
+   //    		"<p>Guesses Remaining: " + countGuess;
+   //    		document.querySelector("#game").innerHTML = html;
+   			if(finish && countGuess!==8) {
+   				wins++;
+   			}
+      		
 
       		var extra=
       		"<p>" + targetWords[idx] + "</p>" +
       		"<p>" + targetDefined[idx] + "</p>";
+      		
       		document.querySelector("#definition").innerHTML = extra;
       		var photo=
       		"<img src =" + targetImage[idx] + ">";
+
       		document.querySelector("#pic").innerHTML = photo;
 
 
-      		// setTimeout(4000);
-// Press any key to continue		
+	
 
 // Select next target word, reset blank spaces, reset used letter array
+			countGuess = 0;
 			usedLetters = [];
 			unknownWord = [];
 			selectedWord = targetWords[Math.floor(Math.random() * targetWords.length)];
@@ -127,12 +149,15 @@ document.onkeyup = function(event) {
 			}
  			 var html=
       			"<p>Unknown Word:   " + unknownWord.join(" ") + "</p>" +
-     			"<p>Used Letters: " + usedLetters.join(" ") + "</p>";
+     			"<p>Used Letters (8 max): " + usedLetters.join(" ") + "</p>" +
+     			"<p>Successes: " + wins;
      			 document.querySelector("#game").innerHTML = html;
 
 		}
 // This is end of event loop.
 }
+
+
 
 
 // Modifications:  Change html update to be a single function that is executed at 4 places.
