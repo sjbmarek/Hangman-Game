@@ -44,7 +44,8 @@ for (i=0;i<selectedWord.length;i++) {
 }
   var html=
       "<p>Unknown Word:   " + unknownWord.join(" ") + "</p>" +
-      "<p>Used Letters (8 max): " + usedLetters.join(" ") + "</p>";
+      "<p>Used Letters (8 max): " + usedLetters.join(" ") + "</p>" +
+      "<p>Successes: " + wins;
       document.querySelector("#game").innerHTML = html;
 
  // Get music and play as background 
