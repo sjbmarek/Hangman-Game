@@ -161,8 +161,6 @@ document.onkeyup = function(event) {
 
 
 
-// Modifications:  Change html update to be a single function that is executed at 4 places.
+// Modifications:  For loop could be functions.  Change html update to be a single function that is executed at 4 places.
 // Add three element array with related target word information.
-// Make the style a calming visual pleasure.
-// Add calm music playing in the background.
 // That is all.
