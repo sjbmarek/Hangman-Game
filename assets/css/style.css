@@ -2,7 +2,7 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 60px;
+    height: 64px;
     line-height: 60px;
     background-color: #303030;
 }
@@ -14,7 +14,7 @@
 }
 
 body {
-    margin-bottom: 60px;
+    margin-bottom: 64px;
 }
 
 html {
@@ -29,4 +29,12 @@ html {
 
 .jumbotron {
 	background-color: white;
+}
+
+.shadow {
+	box-shadow: 6px 3px 20px 0px rgba(116,116,116,0.73);
+}
+
+.jsize {
+	height: 300px;
 }
