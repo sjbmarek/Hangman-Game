@@ -2,10 +2,13 @@
 
 A yoga themed version of the classic game.
 
-This app features Bootstrap and basic Javascript: logic, looping, and array methods.  Bootstrap features include collapsable navbar and a sticky footer - regardless of the content height.
+This app features Javascript: logic, looping, and array methods.  Bootstrap styling features include collapsable navbar and a sticky footer - regardless of the content height.  
+
+Favicon added.
+
+Clean and calm UI with background music.
 
 Breathe, play, enjoy. Namaste'
 
-Clean and calm UI with background music.
 
 ![ScreenShot](/HangmanScreenshot.PNG)
