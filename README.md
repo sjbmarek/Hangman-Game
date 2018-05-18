@@ -6,4 +6,4 @@ Breathe, play, enjoy. Namaste'
 
 Clean and calm UI with background music.
 
-![ScreenShot](/HangmanScreenshot.png)
+![ScreenShot](/HangmanScreenshot.PNG)
