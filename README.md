@@ -2,7 +2,7 @@
 
 A yoga themed version of the classic game.
 
-This app features Javascript: logic, looping, and array methods.  Bootstrap styling features include collapsable navbar and a sticky footer - regardless of the content height.  
+This app features Javascript: logic, looping, and array methods.  Bootstrap styling features include collapsible navbar and a sticky footer - regardless of the content height.  
 
 Favicon added.
 
