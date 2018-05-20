@@ -60,6 +60,10 @@ document.onkeyup = function(event) {
       var userGuess = event.key;
       console.log (userGuess);
       // alert("You selected: " + userGuess);
+      if (!/^[a-zA-Z]+$/.test(userGuess) || userGuess.length!==1) {
+         return
+      };
+
       present=false;
       finish=true;
       console.log(present);
